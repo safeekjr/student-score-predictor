@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Score Predictor</title>
+</head>
+<script>
+async function predictScore() {
+
+    const hours = document.getElementById("hours").value;
+    const attendance = document.getElementById("attendance").value;
+
+    const response = await fetch("/predict", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            hours: Number(hours),
+            attendance: Number(attendance)
+        })
+    });
+
+    const data = await response.json();
+
+    document.getElementById("result").innerText =
+        "Predicted Score: " + data.predicted_score.toFixed(2);
+}
+</script>
+<body>
+
+    <h1>Student Score Predictor 🎓</h1>
+
+    <label>Hours Studied:</label><br>
+    <input type="number" id="hours"><br><br>
+
+    <label>Attendance (%):</label><br>
+    <input type="number" id="attendance"><br><br>
+
+    <button onclick="predictScore()">Predict Score</button>
+    <p id="result"></p>
+
+</body>
+</html>
