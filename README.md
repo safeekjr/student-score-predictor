@@ -16,7 +16,7 @@ Built with **Python, Flask, Scikit-learn**, and deployed live on **PythonAnywher
 
 ## 📸 Preview
 
-assets/project-preview.png
+![Student Score Predictor](assets/project-preview.png)
 
 ---
 
