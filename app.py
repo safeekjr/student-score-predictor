@@ -1,8 +1,10 @@
 from flask import Flask, request, jsonify, render_template
 import joblib
 import pandas as pd
+import os
 app = Flask(__name__)
-model = joblib.load("model.pkl")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+model = joblib.load(os.path.join(BASE_DIR, "model.pkl"))
 @app.route("/")
 def home():
     return render_template("index.html")
